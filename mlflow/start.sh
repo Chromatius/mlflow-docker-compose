@@ -12,4 +12,3 @@ mlflow server \
     --host 0.0.0.0 \
     --port $VIRTUAL_PORT \
     --default-artifact-root $ARTIFACT_PATH
-

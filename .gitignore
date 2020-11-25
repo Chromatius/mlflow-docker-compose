@@ -1,2 +1,2 @@
-.env
-*.*
+# Pycharm specific files
+.idea

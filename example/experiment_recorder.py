@@ -26,7 +26,7 @@ class ExperimentRecorder():
     
     def get_things(self):
         org_dir = hydra.utils.get_original_cwd()
-        run_dir = os.path.abspath('.')
+        run_dir = os.path.abspath('')
         return org_dir, run_dir, logging.getLogger(__name__)
 
     def log_all_params(self, root_param):
