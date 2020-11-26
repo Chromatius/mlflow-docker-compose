@@ -32,14 +32,10 @@ services:
       - postgresql
       - waitfordb
     volumes:
-      - ${ARTIFACT_PATH}:${ARTIFACT_PATH}
+      - .${ARTIFACT_PATH}:${ARTIFACT_PATH}
     environment:
       DB_URI: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgresql:5432/mlflow-db
       VIRTUAL_HOST: ${HOST}
       VIRTUAL_PORT: ${MLFLOW_PORT}
       ARTIFACT_PATH: ${ARTIFACT_PATH}
     command: ./start.sh
-    # <<debug>>
-    # stdin_open: true
-    # tty: true
-    # command: /bin/bash

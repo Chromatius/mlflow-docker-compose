@@ -4,30 +4,22 @@ You can quickly setup your MLflow environment with this example.
 
 ## Quickstart
 
+The MLFlow Tracking server does not out of the box support artifact storage on the remote server itself, and using S3 as the backend is not in scope here.
+The solution then is to store the artifacts locally where the ``mlflow`` client is run, and mount those to the Tracking Server with Docker.
+From there, the Tracking server can pick up the artifacts.
 
-2. Make a folder to store artifacts.
+One tricky thing to keep in mind is that the ``mlflow.create_experiment()`` methods set the artifact storage location, and this applies
+both to the client and the tracking server. Therefore the path to the artifacts have to be the same on both client and server side.
 
-    Edit `.env` if you want to change folder, it's `/tmp/artifacts` by default.
-
-    ```sh
-    mkdir /tmp/artifacts
-    ```
-
-3. Get your mlflow server up and running. This takes time.
+1. Get your mlflow server up and running. This takes time.
 
     ```sh
     docker-compose up --build -d
     ```
 
-4. Confirm your server is running properly.
+2. Confirm your server is running properly.
 
     Open server URI. By default it's `http://localhost:5000/`.
-
-## Basic design
-
-- User ID/password are basically fixed, these are used only for postgresql.
-- Port is set to 5000 by default.
-- Artifact folder is a little tricky, it has to be the same pathname in the local environment and in the server running on docker. So it's set to `/tmp/artifacts` by default.
 
 ## Troubleshooting
 
